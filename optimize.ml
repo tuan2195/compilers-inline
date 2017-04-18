@@ -591,8 +591,11 @@ let optimize prog =
             printf "Cleanup:\n%s\n" (string_of_aprogram cleaned);)
         else ();
         cleaned in
+    let rec n_pass prog n =
+        if n <= 0 then prog else n_pass (pass prog false) (n - 1) in
     let rec optimal prog =
         let new_prog = pass prog true in
         if prog = new_prog then new_prog
         else optimal new_prog in
+    (*atag (n_pass prog 10)*)
     atag (finalize (optimal prog))

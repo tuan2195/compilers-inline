@@ -386,7 +386,7 @@ let count_vars e =
 
 let lambda_heap_size e =
     match e with
-    | CLambda(args, expr, t) ->
+    | CLambda(args, expr, t) | CInline(args, expr, t) ->
         let size = (List.length (rm_dup (free_a expr args)) + 3) in
         if size mod 2 = 0 then size
         else size + 1
