@@ -1,0 +1,1 @@
+let rec f = (inline acc, x: if x==1: acc else: f(acc*x, x - 1)) in f(1, 10)
